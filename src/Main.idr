@@ -61,12 +61,12 @@ process (x :: e :: fs) with (parse pExp e)
           = do
              ss <- searchFiles r fs
              putStrLn (concat ss)
- 
-interface : {[STDIO, SYSTEM, FILE_IO ()]} Eff ()
-interface = do
+
+interface_ : {[STDIO, SYSTEM, FILE_IO ()]} Eff ()
+interface_ = do
               putStrLn "IGrep - grep for Idris"
               args <- getArgs
               process args
             
 main : IO ()
-main = run interface
+main = run interface_

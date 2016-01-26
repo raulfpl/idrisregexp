@@ -6,7 +6,7 @@ import SmartCons
 %default total
 
 -- emptyness test
-                                                                                                            
+
 hasEmptyDec : (e : RegExp) -> Dec (InRegExp [] e)
 hasEmptyDec Zero = No (void . inZeroInv)
 hasEmptyDec Eps = Yes InEps
@@ -46,27 +46,27 @@ derivSound {e = (Chr c)}{xs = xs}{x = x} pr with (decEq c x)
     derivSound {e = (Chr c)}{xs = []}{x = c} pr | (Yes Refl) | Refl = InChr
   derivSound {e = (Chr c)}{xs = xs}{x = x} pr | (No contra) = void (inZeroInv pr)
 derivSound {e = (Cat e e')}{xs = xs}{x = x} pr with (hasEmptyDec e)
-  derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) 
+  derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf)
     with (altOptSound (deriv e x .@. e') (deriv e' x) xs pr)
-      derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltL y) 
+      derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltL y)
         with (catOptSound (deriv e x) e' xs y)
-        derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltL y) | (InCat z w s) 
+        derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltL y) | (InCat z w s)
           = rewrite s in InCat (derivSound z) w Refl
       derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltR y) with (derivSound y)
-        derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltR y) | k = 
+        derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf) | (InAltR y) | k =
           InCat prf k Refl
-  derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra) 
+  derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra)
     with (catOptSound (deriv e x) e' xs pr)
-      derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra) | (InCat y z prf) 
+      derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra) | (InCat y z prf)
         with (derivSound y)
-          derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra) | (InCat y z p) | k 
+          derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (No contra) | (InCat y z p) | k
             = rewrite p in InCat k z Refl
 derivSound {e = (Alt e e')}{xs = xs}{x = x} pr with (altOptSound (deriv e x) (deriv e' x) xs pr)
   derivSound {e = (Alt e e')}{xs = xs}{x = x} pr | (InAltL y) = InAltL (derivSound y)
   derivSound {e = (Alt e e')}{xs = xs}{x = x} pr | (InAltR y) = InAltR (derivSound y)
 derivSound {e = (Star e)}{xs = xs}{x = x} pr with (catOptSound (deriv e x) (Star e) xs pr)
   derivSound {e = (Star e)}{xs = xs}{x = x} pr | (InCat y z prf) with (derivSound y)
-    derivSound {e = (Star e)}{xs = xs}{x = x} pr | (InCat y z prf) | k 
+    derivSound {e = (Star e)}{xs = xs}{x = x} pr | (InCat y z prf) | k
       = rewrite prf in InStar (InAltR (InCat k z Refl))
 
 
@@ -78,25 +78,25 @@ derivComplete {e = (Chr y)}{xs = xs}{x = x} pr with (decEq y x)
   derivComplete {e = (Chr x)}{xs = []}{x = x} InChr | (Yes Refl) = InEps
   derivComplete {e = (Chr x)}{xs = []}{x = x} InChr | (No contra) = void (contra Refl)
 derivComplete {e = (Cat y z)}{xs = xs}{x = x} pr with (hasEmptyDec y)
-  derivComplete {e = (Cat y z)}{xs = xs}{x = x} (InCat {xs = []} w s Refl) | (Yes prf) 
+  derivComplete {e = (Cat y z)}{xs = xs}{x = x} (InCat {xs = []} w s Refl) | (Yes prf)
     = altOptComplete (deriv y x .@. z) (deriv z x) xs (InAltR (derivComplete s))
   derivComplete {e = (Cat y z)}{xs = ys ++ ys1}{x = x} (InCat {xs = (x :: ys)}{ys = ys1} w s Refl)
-    | (Yes prf) 
-      = altOptComplete (deriv y x .@. z) (deriv z x) _ 
-                       (InAltL (catOptComplete (deriv y x) z (ys ++ ys1) 
+    | (Yes prf)
+      = altOptComplete (deriv y x .@. z) (deriv z x) _
+                       (InAltL (catOptComplete (deriv y x) z (ys ++ ys1)
                                 (InCat (derivComplete w) s Refl)))
-  derivComplete {e = (Cat y z)}{xs = xs}{x = x} (InCat {xs = []} w s eq) | (No contra) 
-      = void (contra w) 
+  derivComplete {e = (Cat y z)}{xs = xs}{x = x} (InCat {xs = []} w s eq) | (No contra)
+      = void (contra w)
   derivComplete {e = (Cat y z)}{xs = ys ++ ys1}{x = x} (InCat {xs = (x :: ys)}{ys = ys1} w s Refl)
-    | (No contra) 
+    | (No contra)
       = catOptComplete (deriv y x) z (ys ++ ys1) (InCat (derivComplete w) s Refl)
-derivComplete {e = (Alt e e')}{xs = xs}{x = x} (InAltL y) 
+derivComplete {e = (Alt e e')}{xs = xs}{x = x} (InAltL y)
   = altOptComplete (deriv e x) (deriv e' x) xs (InAltL (derivComplete y))
-derivComplete {e = (Alt e e')}{xs = xs}{x = x} (InAltR y) 
-  = altOptComplete (deriv e x) (deriv e' x) xs (InAltR (derivComplete y)) 
-derivComplete {e = (Star y)}{xs = xs}{x = x} (InStar (InAltL z)) 
-  = void (lemma_val_not_nil (inEpsInv z)) 
-derivComplete {e = (Star y)}{xs = xs}{x = x} (InStar (InAltR (InCat {xs = []} z w Refl))) 
+derivComplete {e = (Alt e e')}{xs = xs}{x = x} (InAltR y)
+  = altOptComplete (deriv e x) (deriv e' x) xs (InAltR (derivComplete y))
+derivComplete {e = (Star y)}{xs = xs}{x = x} (InStar (InAltL z))
+  = void (lemma_val_not_nil (inEpsInv z))
+derivComplete {e = (Star y)}{xs = xs}{x = x} (InStar (InAltR (InCat {xs = []} z w Refl)))
   = derivComplete w
-derivComplete {e = (Star y)}{xs = ys ++ ys1}{x = x} (InStar (InAltR (InCat {xs = (x :: ys)}{ys = ys1} z w Refl))) 
-  = catOptComplete (deriv y x) (Star y) (ys ++ ys1) (InCat (derivComplete z) w Refl) 
+derivComplete {e = (Star y)}{xs = ys ++ ys1}{x = x} (InStar (InAltR (InCat {xs = (x :: ys)}{ys = ys1} z w Refl)))
+  = catOptComplete (deriv y x) (Star y) (ys ++ ys1) (InCat (derivComplete z) w Refl)

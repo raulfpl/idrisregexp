@@ -6,13 +6,13 @@ import RegExp
 
 appendNilR : (xs : List a) -> xs = xs ++ []
 appendNilR [] = Refl
-appendNilR (x :: xs) = cong (appendNilR xs)  
+appendNilR (x :: xs) = cong (appendNilR xs)
 
 inRegLemma : InRegExp xs1 e -> xs = xs1 ++ [] -> InRegExp xs e
 inRegLemma {xs1} pr eq with (trans (appendNilR xs1) (sym eq))
                  | Refl = pr
 infixl 4 .|.
-  
+
 (.|.) : RegExp -> RegExp -> RegExp
 Zero .|. e = e
 e .|. Zero = e
@@ -67,12 +67,12 @@ altOptSound (Star x) Eps xs pr = pr
 altOptSound (Star x) (Chr y) xs pr = pr
 altOptSound (Star x) (Cat y z) xs pr = pr
 altOptSound (Star x) (Alt y z) xs pr = pr
-altOptSound (Star x) (Star y) xs pr = pr              
- 
-altOptComplete : (l : RegExp)  -> 
-                 (r : RegExp)  -> 
-                 (xs : List Char) -> 
-                 InRegExp xs (Alt l r) -> 
+altOptSound (Star x) (Star y) xs pr = pr
+
+altOptComplete : (l : RegExp)  ->
+                 (r : RegExp)  ->
+                 (xs : List Char) ->
+                 InRegExp xs (Alt l r) ->
                  InRegExp xs (l .|. r)
 altOptComplete Zero r xs (InAltL x) = void (inZeroInv x)
 altOptComplete Zero r xs (InAltR x) = x
@@ -175,7 +175,7 @@ catOptComplete (Star x) Eps xs (InCat y InEps prf) = inRegLemma y prf
 catOptComplete (Star x) (Chr y) xs pr = pr
 catOptComplete (Star x) (Cat y z) xs pr = pr
 catOptComplete (Star x) (Alt y z) xs pr = pr
-catOptComplete (Star x) (Star y) xs pr = pr                 
+catOptComplete (Star x) (Star y) xs pr = pr
 
 starOptSound : (l : RegExp) ->
                (xs : List Char) ->
@@ -186,11 +186,11 @@ starOptSound Eps xs pr = InStar (InAltL pr)
 starOptSound (Chr x) xs pr = pr
 starOptSound (Cat x y) xs pr = pr
 starOptSound (Alt x y) xs pr = pr
-starOptSound (Star x) xs pr = pr               
+starOptSound (Star x) xs pr = pr
 
 starOptComplete : (l : RegExp) ->
-                  (xs : List Char) -> 
-                  InRegExp xs (Star l) -> 
+                  (xs : List Char) ->
+                  InRegExp xs (Star l) ->
                   InRegExp xs (star l)
 starOptComplete Zero xs (InStar (InAltL x)) = x
 starOptComplete Zero xs (InStar (InAltR (InCat x y prf))) = void (inZeroInv x)
@@ -199,4 +199,4 @@ starOptComplete Eps xs (InStar (InAltR (InCat InEps y Refl))) = starOptComplete 
 starOptComplete (Chr x) xs pr = pr
 starOptComplete (Cat x y) xs pr = pr
 starOptComplete (Alt x y) xs pr = pr
-starOptComplete (Star x) xs pr = pr                  
+starOptComplete (Star x) xs pr = pr

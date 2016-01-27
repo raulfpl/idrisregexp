@@ -2,3 +2,4 @@
 .DS_Store
 *.ibc
 igrep*
+.dir-locals.el

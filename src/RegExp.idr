@@ -9,6 +9,7 @@ data RegExp : Type where
   Cat  : RegExp -> RegExp -> RegExp
   Alt  : RegExp -> RegExp -> RegExp
   Star : RegExp -> RegExp
+  Comp : RegExp -> RegExp
 
 data InRegExp : List Char -> RegExp -> Type where
   InEps : InRegExp [] Eps
@@ -23,6 +24,7 @@ data InRegExp : List Char -> RegExp -> Type where
            InRegExp xs (Alt l r)
   InStar : InRegExp xs (Alt Eps (Cat e (Star e))) ->
            InRegExp xs (Star e)
+  InComp : Not (InRegExp xs e) -> InRegExp xs (Comp e)
 
 inZeroInv : InRegExp xs Zero -> Void
 inZeroInv InEps impossible

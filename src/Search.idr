@@ -37,6 +37,10 @@ deriv (Star e) c = (deriv e c) .@. (Star e)
 deriv (Cat l r) c with (hasEmptyDec l)
   deriv (Cat l r) c | Yes prf = ((deriv l c) .@. r) .|. (deriv r c)
   deriv (Cat l r) c | No nprf = (deriv l c) .@. r
+deriv (Comp e) c with (deriv e c)
+  deriv (Comp e) c | Eps  = Zero
+  deriv (Comp e) c | Zero = Eps
+  deriv (Comp e) c | e'   = Comp e'
 
 derivSound : InRegExp xs (deriv e x) -> InRegExp (x :: xs) e
 derivSound {e = Zero}{xs = xs}{x = x} pr = void (inZeroInv pr)

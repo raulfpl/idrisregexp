@@ -1,6 +1,7 @@
 module SmartCons
 
 import RegExp
+%access public export
 
 %default total
 

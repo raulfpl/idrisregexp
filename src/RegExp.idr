@@ -1,6 +1,7 @@
 module RegExp
 
 %default total
+%access public export
 
 data RegExp : Type where
   Zero : RegExp

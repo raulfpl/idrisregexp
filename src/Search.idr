@@ -4,6 +4,7 @@ import RegExp
 import SmartCons
 
 %default total
+%access public export
 
 -- emptyness test
 
@@ -26,7 +27,7 @@ hasEmptyDec (Star e) = Yes (InStar (InAltL InEps))
 
 -- derivative definition
 
-deriv : (e : RegExp) -> Char -> RegExp
+deriv : (e : RegExp) -> Nat -> RegExp
 deriv Zero c = Zero
 deriv Eps c = Zero
 deriv (Chr c') c with (decEq c' c)
@@ -39,12 +40,12 @@ deriv (Cat l r) c with (hasEmptyDec l)
   deriv (Cat l r) c | No nprf = (deriv l c) .@. r
 
 derivSound : InRegExp xs (deriv e x) -> InRegExp (x :: xs) e
-derivSound {e = Zero}{xs = xs}{x = x} pr = void (inZeroInv pr)
-derivSound {e = Eps}{xs = xs}{x = x} pr = void (inZeroInv pr)
-derivSound {e = (Chr c)}{xs = xs}{x = x} pr with (decEq c x)
-  derivSound {e = (Chr c)}{xs = xs}{x = c} pr | (Yes Refl) with (inEpsInv pr)
-    derivSound {e = (Chr c)}{xs = []}{x = c} pr | (Yes Refl) | Refl = InChr
-  derivSound {e = (Chr c)}{xs = xs}{x = x} pr | (No contra) = void (inZeroInv pr)
+derivSound {e = (Chr c)} {x = x}{xs = xs} pr with (decEq c x)
+  derivSound {e = (Chr c)} {x = c}{xs = []} pr | Yes Refl = InChr
+  derivSound {e = (Chr c)} {x = c}{xs = (x :: xs)} pr | Yes Refl = void (inEpsCons pr)
+  derivSound {e = (Chr c)} {x = x}{xs = xs} InEps | No contra impossible
+derivSound {e = Zero} pr = void (inZeroInv pr)
+derivSound {e = Eps} pr = void (inZeroInv pr)
 derivSound {e = (Cat e e')}{xs = xs}{x = x} pr with (hasEmptyDec e)
   derivSound {e = (Cat e e')}{xs = xs}{x = x} pr | (Yes prf)
     with (altOptSound (deriv e x .@. e') (deriv e' x) xs pr)

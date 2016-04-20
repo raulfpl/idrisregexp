@@ -1,25 +1,16 @@
 module RegExp
 
 %default total
-%access public export
 
 data RegExp : Type where
   Zero : RegExp
   Eps  : RegExp
-<<<<<<< HEAD
   Chr  : Char -> RegExp
-=======
-  Chr  : Nat -> RegExp
->>>>>>> 2b4e4597351505d7ad90c865432deebdf7bf2970
   Cat  : RegExp -> RegExp -> RegExp
   Alt  : RegExp -> RegExp -> RegExp
   Star : RegExp -> RegExp
 
-<<<<<<< HEAD
 data InRegExp : List Char -> RegExp -> Type where
-=======
-data InRegExp : List Nat -> RegExp -> Type where
->>>>>>> 2b4e4597351505d7ad90c865432deebdf7bf2970
   InEps : InRegExp [] Eps
   InChr : InRegExp [ a ] (Chr a)
   InCat : InRegExp xs l ->
@@ -39,14 +30,8 @@ inZeroInv InEps impossible
 inEpsInv : InRegExp xs Eps -> xs = []
 inEpsInv InEps = Refl
 
-inEpsCons : InRegExp (x :: xs) Eps -> Void
-inEpsCons InEps impossible
-
 inChrNil : InRegExp [] (Chr c) -> Void
 inChrNil InEps impossible
-
-inChrDif : Not (c = x) -> InRegExp (x :: xs) (Chr c) -> Void
-inChrDif ncx InChr = ncx Refl
 
 concatNil : Prelude.List.Nil = (xs ++ ys) -> (xs = Prelude.List.Nil , ys = Prelude.List.Nil)
 concatNil {xs = []}{ys = []} p = (Refl, Refl)

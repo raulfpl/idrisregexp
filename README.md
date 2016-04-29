@@ -1,4 +1,4 @@
-A verified regular expression matching tool in Idris
+Certified Derivative-Based Parsing of Regular Expressions
 ===================================
 
 A formalized tool for searching using regular expression. This development is based on the article:

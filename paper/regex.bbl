@@ -1,0 +1,182 @@
+\begin{thebibliography}{10}
+
+\bibitem{BernardyJ16}
+Jean{-}Philippe Bernardy and Patrik Jansson.
+\newblock Certified context-free parsing: {A} formalisation of valiant's
+  algorithm in agda.
+\newblock {\em CoRR}, abs/1601.07724, 2016.
+
+\bibitem{Bertot2010}
+Yves Bertot and Pierre Castran.
+\newblock {\em Interactive Theorem Proving and Program Development: Coq'Art The
+  Calculus of Inductive Constructions}.
+\newblock Springer Publishing Company, Incorporated, 1st edition, 2010.
+
+\bibitem{Brady2013}
+Edwin Brady.
+\newblock Idris, a general-purpose dependently typed programming language:
+  Design and implementation.
+\newblock {\em Journal of Functional Programming}, 23:552--593, 9 2013.
+
+\bibitem{Brady2013a}
+Edwin Brady.
+\newblock Programming and reasoning with algebraic effects and dependent types.
+\newblock In {\em Proceedings of the 18th ACM SIGPLAN International Conference
+  on Functional Programming}, ICFP '13, pages 133--144, New York, NY, USA,
+  2013. ACM.
+
+\bibitem{Brzozowski1964}
+Janusz~A. Brzozowski.
+\newblock Derivatives of regular expressions.
+\newblock {\em J. ACM}, 11(4):481--494, October 1964.
+
+\bibitem{Danielsson2010}
+Nils~Anders Danielsson.
+\newblock Total parser combinators.
+\newblock {\em SIGPLAN Not.}, 45(9):285--296, September 2010.
+
+\bibitem{Felleisen2013}
+Matthias Felleisen, M.D.~Barski Conrad, David~Van Horn, and Eight~Students
+  of~Northeastern~University.
+\newblock {\em Realm of Racket: Learn to Program, One Game at a Time!}
+\newblock No Starch Press, San Francisco, CA, USA, 2013.
+
+\bibitem{FirsovU13}
+Denis Firsov and Tarmo Uustalu.
+\newblock Certified parsing of regular languages.
+\newblock In Georges Gonthier and Michael Norrish, editors, {\em Certified
+  Programs and Proofs - Third International Conference, {CPP} 2013, Melbourne,
+  VIC, Australia, December 11-13, 2013, Proceedings}, volume 8307 of {\em
+  Lecture Notes in Computer Science}, pages 98--113. Springer, 2013.
+
+\bibitem{FirsovU14}
+Denis Firsov and Tarmo Uustalu.
+\newblock Certified {CYK} parsing of context-free languages.
+\newblock {\em J. Log. Algebr. Meth. Program.}, 83(5-6):459--468, 2014.
+
+\bibitem{Firsov2014}
+Denis Firsov and Tarmo Uustalu.
+\newblock Certified \{CYK\} parsing of context-free languages.
+\newblock {\em Journal of Logical and Algebraic Methods in Programming},
+  83(5–6):459 -- 468, 2014.
+\newblock The 24th Nordic Workshop on Programming Theory (NWPT 2012).
+
+\bibitem{Fischer2010}
+Sebastian Fischer, Frank Huch, and Thomas Wilke.
+\newblock A play on regular expressions: Functional pearl.
+\newblock In {\em Proceedings of the 15th ACM SIGPLAN International Conference
+  on Functional Programming}, ICFP '10, pages 357--368, New York, NY, USA,
+  2010. ACM.
+
+\bibitem{FrischC04}
+Alain Frisch and Luca Cardelli.
+\newblock Greedy regular expression matching.
+\newblock In Josep D{\'{\i}}az, Juhani Karhum{\"{a}}ki, Arto Lepist{\"{o}}, and
+  Donald Sannella, editors, {\em Automata, Languages and Programming: 31st
+  International Colloquium, {ICALP} 2004, Turku, Finland, July 12-16, 2004.
+  Proceedings}, volume 3142 of {\em Lecture Notes in Computer Science}, pages
+  618--629. Springer, 2004.
+
+\bibitem{Grep}
+{GNU Grep home page}.
+\newblock \verb+https://www.gnu.org/software/grep/+.
+
+\bibitem{Hopcroft2000}
+John~E. Hopcroft, Rajeev Motwani, Rotwani, and Jeffrey~D. Ullman.
+\newblock {\em Introduction to Automata Theory, Languages and Computability}.
+\newblock Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA, 2nd
+  edition, 2000.
+
+\bibitem{idris-tutorial}
+{The Idris Tutorial}.
+\newblock \verb+http://docs.idris-lang.org/en/latest/tutorial/+.
+
+\bibitem{Jourdan2012}
+Jacques-Henri Jourdan, Fran\c{c}ois Pottier, and Xavier Leroy.
+\newblock Validating lr(1) parsers.
+\newblock In {\em Proceedings of the 21st European Conference on Programming
+  Languages and Systems}, ESOP'12, pages 397--416, Berlin, Heidelberg, 2012.
+  Springer-Verlag.
+
+\bibitem{Lesk1990}
+M.~E. Lesk and E.~Schmidt.
+\newblock Unix vol. ii.
+\newblock chapter Lex\&Mdash;a Lexical Analyzer Generator, pages 375--387. W.
+  B. Saunders Company, Philadelphia, PA, USA, 1990.
+
+\bibitem{lightyear}
+{The Lightyear Idris Parsing Combinator Library}.
+\newblock \verb+https://github.com/ziman/lightyear/+.
+
+\bibitem{regex-rep}
+Raul Lopes, Rodrigo Ribeiro, and Carlos Camar\~ao.
+\newblock Certified derivative based parsing of regular expressions --- on-line
+  repository.
+\newblock https://github.com/raulfpl/idrisregexp, 2016.
+
+\bibitem{MacedoO13}
+Hugo~Daniel Macedo and Jos{\'{e}}~Nuno Oliveira.
+\newblock Typing linear algebra: {A} biproduct-oriented approach.
+\newblock {\em CoRR}, abs/1312.4818, 2013.
+
+\bibitem{McBride1999}
+Conor McBride.
+\newblock {\em {Dependently Typed Functional Programs and their Proofs}}.
+\newblock PhD thesis, Department of Informatics, University of Edinburgh, 1999.
+
+\bibitem{McBride2004}
+Conor McBride and James McKinna.
+\newblock The view from the left.
+\newblock {\em J. Funct. Program.}, 14(1):69--111, January 2004.
+
+\bibitem{Might2011}
+Matthew Might, David Darais, and Daniel Spiewak.
+\newblock Parsing with derivatives: A functional pearl.
+\newblock {\em SIGPLAN Not.}, 46(9):189--195, September 2011.
+
+\bibitem{Norell2009}
+Ulf Norell.
+\newblock Dependently typed programming in agda.
+\newblock In {\em Proceedings of the 4th International Workshop on Types in
+  Language Design and Implementation}, TLDI '09, pages 1--2, New York, NY, USA,
+  2009. ACM.
+
+\bibitem{Owens2009}
+Scott Owens, John Reppy, and Aaron Turon.
+\newblock Regular-expression derivatives re-examined.
+\newblock {\em J. Funct. Program.}, 19(2):173--190, March 2009.
+
+\bibitem{Pierce2002}
+Benjamin~C. Pierce.
+\newblock {\em Types and Programming Languages}.
+\newblock The MIT Press, 1st edition, 2002.
+
+\bibitem{re2}
+{Google Regular Expression Library - re2}.
+\newblock \verb+https://github.com/google/re2+.
+
+\bibitem{Sorensen2006}
+Morten~Heine S{\o}rensen and Pawel Urzyczyn.
+\newblock {\em Lectures on the Curry-Howard Isomorphism, Volume 149 (Studies in
+  Logic and the Foundations of Mathematics)}.
+\newblock Elsevier Science Inc., New York, NY, USA, 2006.
+
+\bibitem{SulzmannL14}
+Martin Sulzmann and Kenny Zhuo~Ming Lu.
+\newblock {POSIX} regular expression parsing with derivatives.
+\newblock In Michael Codish and Eijiro Sumii, editors, {\em Functional and
+  Logic Programming - 12th International Symposium, {FLOPS} 2014, Kanazawa,
+  Japan, June 4-6, 2014. Proceedings}, volume 8475 of {\em Lecture Notes in
+  Computer Science}, pages 203--220. Springer, 2014.
+
+\bibitem{Hott}
+The {Univalent Foundatiosn Program}.
+\newblock {\em Homotopy Type Theory: Univalent Foundations of Mathematics}.
+\newblock \url{http://homotopytypetheory.org/book/}, 2013.
+
+\bibitem{Valiant1975}
+Leslie~G. Valiant.
+\newblock General context-free recognition in less than cubic time.
+\newblock {\em J. Comput. Syst. Sci.}, 10(2):308--315, April 1975.
+
+\end{thebibliography}

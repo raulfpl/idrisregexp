@@ -52,4 +52,4 @@ and execute:
     make test
     make install
 
-The development is done using Idris version 0.9.19.
+The development is done using Idris version 0.9.11.
